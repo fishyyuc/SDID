@@ -6,17 +6,6 @@ clear
 *關閉 STATA 的「more」功能
 set more off
 
-*檔案存放位置設定
-global rawdata = "C:\Users\cindy\OneDrive\桌面\學術-LAPTOP-T8S7SF39\06 DID\rawdata"
-global stata = "C:\Users\cindy\OneDrive\桌面\學術-LAPTOP-T8S7SF39\06 DID\stata"
-
-*設置資料夾路徑
-cd "${stata}"
-
-
-*匯入資料並將第一行作為變量名稱
-import excel "C:\Users\cindy\OneDrive\桌面\學術-LAPTOP-T8S7SF39\06 DID\rawdata\Filtered_Dataset.xlsx", sheet("Sheet1") firstrow clear
-
 
 rename GOS_AllIndustries GOS
 rename Income_TotalWages Income
@@ -96,12 +85,6 @@ sdid Carbon_Transport State Year ETS, vce(placebo) reps(50) method(sdid) graph
 
 sdid Carbon_Electricity State Year ETS, vce(placebo) reps(50) method(sdid) graph 
 
-
-
-graph export "C:\Users\cindy\OneDrive\桌面\學術-LAPTOP-T8S7SF39\06 DID\stata\g2_2012.jpg", as(jpg) name("g2_2012") quality(90)
-save "C:\Users\cindy\OneDrive\桌面\學術-LAPTOP-T8S7SF39\06 DID\stata\data2.dta", replace
-
-log close
 
 *若用一般did
 *平衡趨勢檢定
